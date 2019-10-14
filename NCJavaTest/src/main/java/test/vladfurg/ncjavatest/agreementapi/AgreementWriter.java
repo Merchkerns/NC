@@ -1,6 +1,7 @@
 package test.vladfurg.ncjavatest.agreementapi;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import test.vladfurg.ncjavatest.agreementproduct.Agreement;
 import test.vladfurg.ncjavatest.agreementproduct.Product;
 
@@ -39,6 +40,7 @@ public class AgreementWriter
         if(validatePath() && validateObject())
         {
             ObjectMapper mapper = new ObjectMapper();
+            mapper.enable(SerializationFeature.INDENT_OUTPUT);
             mapper.writeValue(new File(this.directoryPath + this.fileName), agreement);
         }
         else
